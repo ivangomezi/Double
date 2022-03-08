@@ -1,0 +1,45 @@
+<section class="container mt-3">
+    
+    <div class="container">
+        <button class="btn btn-danger btn-prev" [routerLink]="['/app/users']">
+            Regresar
+        </button>
+    </div>
+
+    <div class="card" style="position: relative;" *ngFor="let user of ListUser">
+        <a href="{{user.html_url}}" target="_blank">
+            <i class="fa-brands fa-github"></i>
+            Github
+        </a>
+        <img src="{{user.avatar_url}}" class="card-img-top"  alt="img">
+        <h4 class="badge bg-dark mx-0 px-3 pt-2 pb-2" style="border-radius: 0px;">
+            Repositorios Publicos: 
+            <span class="badge bg-light text-dark mx-2">
+                {{user.public_repos}}
+            </span>
+        </h4>
+        <div class="card-body" style="border-top: 1px solid #e1e1e1;">
+            <h5 class="card-title">
+                {{user.login}}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{user.bio}}</h6>
+        </div>
+        <div class="card-footer" style="text-align: center;">
+            <h4 class="badge bg-success px-3 pt-2 pb-2">
+                <i class="fa-solid fa-thumbs-up"></i>
+                Seguidores: 
+                <span class="badge bg-light text-dark mx-2">
+                    {{user.followers}}
+                </span>
+            </h4>
+            <h4 class="badge bg-info px-3 pt-2 pb-2">
+                <i class="fa-solid fa-user-plus"></i>
+                Seguidos: 
+                <span class="badge bg-light text-dark mx-2">
+                    {{user.following}}
+                </span>
+            </h4>
+        </div>
+    </div>
+
+</section>

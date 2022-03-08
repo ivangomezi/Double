@@ -1,0 +1,39 @@
+<section class="container mt-3">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Buscar Usuarios</h3>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="Search()" [formGroup]="form" novalidate>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="DIGITE USUARIO LOGIN" formControlName="userlogin">
+                    <button class="btn btn-success" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div *ngIf="form.controls['userlogin'].invalid && form.controls['userlogin'].dirty">
+                    <p class="alert alert-danger">Minimo 4 caracteres</p>
+                </div>
+                <div *ngIf="form.controls['userlogin'].value == 'doublevpartners'">
+                    <p class="alert alert-danger">No se permite este username</p>
+                </div>
+            </form>
+        </div>
+        <li class="list-group-item active" style="text-align: center;">
+            {{Message}}
+        </li>
+        <div class="card-context" >
+            <ul class="list-group list-group-flush">
+                <a (click)="Redirect($event)" id="{{user.login}}" *ngFor="let user of ListUser.slice(0, 10);">
+                    <li id="{{user.login}}" class="list-group-item">
+                        <span class="badge bg-info">{{user.id}}</span> 
+                        <strong class="mx-3">{{user.login}}</strong>
+                        <img src="{{user.avatar_url}}" class="rounded float-end" alt="IMG-{{user.id}}">
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+</section>
